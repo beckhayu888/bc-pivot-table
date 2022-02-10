@@ -1,13 +1,15 @@
 <template>
   <section style="width: 500px; height: 200px; overflow: hidden">
-    <FixedPivotTable v-if="fixed" :rowKey="rowKey" :colKey="colKey" :dataList="dataList" :valueKey="valueKey" :showSum="showSum" :cellStyleOps="cellStyleOps"></FixedPivotTable>
-    <BasePivotTable v-else :rowKey="rowKey" :colKey="colKey" :dataList="dataList" :valueKey="valueKey" :showSum="showSum" :cellStyleOps="cellStyleOps"></BasePivotTable>
+    <bc-fixed-pivot-table v-if="fixed" :rowKey="rowKey" :colKey="colKey" :dataList="dataList"
+    :valueKey="valueKey" :showSum="showSum" :cellStyleOps="cellStyleOps"></bc-fixed-pivot-table>
+    <bc-base-pivot-table v-else :rowKey="rowKey" :colKey="colKey" :dataList="dataList"
+    :valueKey="valueKey" :showSum="showSum" :cellStyleOps="cellStyleOps"></bc-base-pivot-table>
   </section>
 </template>
 
 <script lang="ts" setup>
-import BasePivotTable from '@/components/BasePivotTable/BasePivotTable.vue';
-import FixedPivotTable from '@/components/FixedPivotTable/FixedPivotTable.vue';
+import BcBasePivotTable from '@/components/BasePivotTable/BasePivotTable.vue';
+import BcFixedPivotTable from '@/components/FixedPivotTable/FixedPivotTable.vue';
 import { ref } from 'vue';
 let fixed = ref(true); // 是否固定左边列
 let showSum = ref(true); // 是否展示合计
