@@ -22,20 +22,29 @@ bc-pivot-table
 
 ## 组件
 BcBasePivotTable：不固定表左边列的透视表
+
 BcFixedPivotTable：固定左边列的透视表
 ## 使用
 
 ### 全局引入
 `import bcPivotTable from 'bc-pivot-table'`
+
 `import 'bc-pivot-table/lib/bc-pivot-table.css'`
+
 `createApp(App).use(bcPivotTable)`
+
 `<bc-base-pivot-table></bc-base-pivot-table>`
+
 `<bc-fixed-pivot-table></bc-fixed-pivot-table>`
+
 
 ### 局部引入
 `import { BcBasePivotTable, BcFixedPivotTable } from 'bc-pivot-table'`
+
 `import 'bc-pivot-table/lib/bc-pivot-table.css'`
+
 `<bc-base-pivot-table></bc-base-pivot-table>`
+
 `<bc-fixed-pivot-table></bc-fixed-pivot-table>`
 
 
@@ -44,16 +53,40 @@ BcFixedPivotTable：固定左边列的透视表
 参数 | 类型 | 默认 | 备注
 ---------|------|---------|------------
 `showSum` | `Boolean` | `true` | `是否展示合计`
-`valueKey` | `String` | `value` | `数据中值的使用字段`
+`valueKey` | `String` | `value` | `data中值的使用字段`
 `rowKey` | `Array` | `[]` | `左边列的配置数组`
 `colKey` | `Array` | `[]` | `上面表头列的配置数组`
 `dataList` | `Array` | `[]` | `data`
 `cellStyleOps` | `Object` | `{}` | `透视表配置`
 
+##### rowKey、colKey
 
+参数 | 类型 | 默认 | 备注
+---------|------|---------|------------
+`label` | `String` | ` ` | `显示的label`
+`value` | `String` | ` ` | `data中值的使用字段`
+
+##### cellStyleOps
+
+参数 | 类型 | 默认 | 备注
+---------|------|---------|------------
+`paddingLeft` | `Number` | ` 6` | `每一个格子的padding-left属性`
+`paddingRight` | `Number` | ` 6` | `每一个格子的padding-right属性`
+`height` | `Number` | ` 25` | `每一个格子的高度属性`
+`fontSize` | `Number` | ` 12` | `字体大小`
+`maxWidth` | `Number` | ` 150` | `每一个格子的最大宽度`
+`workerAutoLimit` | `Number` | `1000 ` | `数据量到达多少条的时候启动webWorker去进行计算（多数据时的解决方案）`
+
+### 重要remark!!!
+切记！！！不能随意更改使格子宽度和高度变化的css属性，不然会造成格子样式错乱
+
+更改颜色等不会改变宽高的样式可以使用深度选择器进行修改
+
+当前版本仅支持vue3.x版本
 ### 例子
 ![效果](https://github.com/beckhayu888/bc-pivot-table/blob/main/src/assets/preview.png)
 ![例子代码](https://github.com/beckhayu888/bc-pivot-table/blob/main/src/assets/code1.png)
 ![例子代码](https://github.com/beckhayu888/bc-pivot-table/blob/main/src/assets/code2.png)
 ![例子代码](https://github.com/beckhayu888/bc-pivot-table/blob/main/src/assets/code3.png)
+
 可以自行下载代码查看例子
