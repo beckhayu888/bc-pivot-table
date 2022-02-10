@@ -29,7 +29,6 @@ BcFixedPivotTable：固定左边列的透视表
 ### 全局引入
 `import bcPivotTable from 'bc-pivot-table'`
 
-`import 'bc-pivot-table/lib/bc-pivot-table.css'`
 
 `createApp(App).use(bcPivotTable)`
 
@@ -41,7 +40,6 @@ BcFixedPivotTable：固定左边列的透视表
 ### 局部引入
 `import { BcBasePivotTable, BcFixedPivotTable } from 'bc-pivot-table'`
 
-`import 'bc-pivot-table/lib/bc-pivot-table.css'`
 
 `<bc-base-pivot-table></bc-base-pivot-table>`
 
