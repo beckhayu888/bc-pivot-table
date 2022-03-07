@@ -139,15 +139,24 @@ function getSumWidth(maxRightSum: number, bottomSumList: number[], lastLinkTree:
     const width = getTextWidth(v.toString(), fontSize)[0] + cellStyleOps.paddingLeft + cellStyleOps.paddingRight;
     if (width > (lastHeaderLine[i].width || 0)) {
       // 格子大了，要更新这一列的格子
-      lastLinkTree.forEach((item) => {
-        item[i].width = width;
-      });
+      lastHeaderLine[i].width = width
       bodyDataList.forEach((item) => {
         item[i].width = width;
       });
     }
   });
+  updateLastLinkTree(lastLinkTree[0]) // 最后再次更新表头单元格宽度
   return Math.min(Math.max(headerWidth, maxRightWidth), cellStyleOps.maxWidth);
+}
+function updateLastLinkTree (lastLinkTree: treeItemObj[]) {
+  let sumWidth = 0
+  lastLinkTree.forEach((v: any) => {
+    if (Array.isArray(v.children) && v.children.length > 0) {
+      v.width = Math.max(v.width, updateLastLinkTree(v.children))
+    }
+    sumWidth += v.width
+  })
+  return sumWidth
 }
 function getRightData(treeList: treeItemObj[], lastLinkTree: treeItemObj[][], cellStyleOps: any, rowBodyList: itemObj[][], treeDataMap: Map<string, Map<string, number | string>>) {
   getWidth(treeList, lastLinkTree, cellStyleOps);
